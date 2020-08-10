@@ -3,13 +3,13 @@
 ## Function to set matrix and inverse
 
 makeCacheMatrix <- function(x = matrix()) {
-    i <- NULL
+    i <- NULL ## Sets inverse to null
     set <- function(y) {
         x <<- y
         i <<- NULL
     }
     get <- function() x
-    setinverse <- function(solve) i <<- solve
+    setinverse <- function(solve) i <<- solve ## Sets inverse
     getinverse <- function() i
     list(set = set, get = get,
          setinverse = setinverse,
@@ -23,7 +23,7 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
     i <- x$getinverse()
     if(!is.null(i)) {
-        print("getting cached data")
+        print("getting cached data") ## executes if inverse has already been calculated
         return(i)
     }
     data <- x$get()
